@@ -19,4 +19,3 @@ Comando|Descripcción
 pip list| lista de librerias instaladas
 python -m venv env| Crea entorno virtual 
 
-mod hola 
