@@ -40,11 +40,11 @@ h1 {
 }
 
 h2 {
-    color: green;
+    color: rgb(2, 32, 60);
 }
 
 h3 {
-    color: orange;
+    color: rgb(0, 255, 13);
 }
 
 /*Estilos Footer*/
@@ -64,7 +64,36 @@ footer{
 .formulario{
     max-width: 500px;
     margin: 30px auto;
-    background-color: #e9a553;
+    background-color:#b4d7d7;
     padding: 20px;
     border-radius: 8px;
 }
+.formulario h2{
+    margin-bottom: 15px;
+text-align: center;}
+.formulario label{
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario textarea{
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    }
+
+    .formulario button{
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #467c7c;
+        color: white;   
+        border: none;
+        cursor: pointer;
+            }
+    .formulario button:hover{
+        background-color: #ff0000f8;
+    }
