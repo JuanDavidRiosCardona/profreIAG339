@@ -10,36 +10,39 @@ app = Flask(__name__)
 model, vectorizer = load_model()
 if model is None:
     model, vectorizer = build_and_train_model(training_data, n_clusters=6)  # ✅ Número de grupos ajustable
-    
-    
+
+
 
 #Respuestas por grupo
 RESPUESTAS ={
-    0: ["¡Hola! 😊 ¿Cómo estás",
-        "¡Qué gusto saludarte! 👋",
-        "¡Hola en que puedo ayudarte",
-        ],
-    1: ["Hasta luego ",
-        "Nos vemos pronto ",
-        "Cuidate espero verte de nuevo",
-        ],
-    2: ["Soy un asistente creado para ayudarte 🤖",
-        "¡Por supuesto! ¿En qué puedo ayudarte ?",
-        "Cuentame tu problema y buscar solución",
-        ],
-    3: ["Puedo ofrecerte información o resolver tus dudas",
-        "¡En que te puedo ayudar! ?",
-        "Estoy aquí para resolvewr tus preguntas",
-        ],
-    4:["¡Gracias a ti!❤️",
-       "De nada, me alegra ser de ayuda😊",
-       "Muy amable de tu parte",
+    0:["¡Hola! 😊 ¿Cómo estás",
+       "¡Qué gusto saludarte!",
+       "¡Hola! ¿en que puedo ayudarte?",
        ],
-    5: ["Lamentoque te sientas así, puedo intentarlo de nuevo",
-        "Parece que algo no salió bien, ¿Quieres que lo revisemos?",
-        "No siempre soy perfecto, pero puedo intentarlo otra vez",
-        ],
-    
+    1:["Hasta luego",
+       "Nosvemos pronto",
+       "Cuidate Espero verte de nuevo",
+       ],
+    2:["¡Hola! 😊 ¿Cómo estás",
+       "¡Qué gusto saludarte!",
+       "¡Hola! ¿en que puedo ayudarte?",
+        "Soy un asistente virtual creado para ayudarte",
+       "¡Por supuesto! ¿con qué necesitas ayuda?,",
+       "Cuéntame tu problema y buscaré una solución",
+       ],
+    3:["Puedo ofrecerte información o resolver tus dudas",
+       "¡En que te puedo ayudar",
+       "Estoy aquí para resolver tus preguntas",
+       ],
+    4:["¡Gracias a ti! 💓",
+       "De nada, me alegra ser de ayuda",
+       "¡Muy amable de tu parte!",
+       ],
+    5:["Lamento que te sientas así, puedo intentarlo de nuevo",
+       "Parece que algo no salió bien, ¿Quieres que lo revicemos?",
+       "No siempre soy perfecto, pero puedo intentarlo otra vez.",
+       ],
+
 }
 @app.route("/")
 def home():
@@ -56,10 +59,10 @@ def chat():
     cluster = predict_cluster(model, vectorizer, user_text)
 
     # ✅ Mensaje más descriptivo
-   # response = f"Tu mensaje pertenece al grupo {cluster}. Este grupo contiene frases con significados similares."
-    response=random.choice(RESPUESTAS.get(cluster, [
-        "No estoy seguro de entnder, pero puedo intentarlo otra vez"]))
-
+    #response = f"Tu mensaje pertenece al grupo {cluster}. Este grupo contiene frases con significados similares."
+    response=random.choice(RESPUESTAS.get(cluster,[
+        "No estoy seguro de entender, pero puedo intentarlo otra vez."
+    ]))
     return jsonify({"response": response})
 
 
